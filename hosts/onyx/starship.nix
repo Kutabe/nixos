@@ -75,11 +75,12 @@
 
       # Git status with symbols
       git_status = {
-        format = " [$ahead_behind $all_status]($style)";
+        format = " [$ahead_behind$all_status]($style)";
         style = "fg:pink";
 
-        ahead = "󰁝 \${count}";
-        behind = "󰁅 \${count}";
+        ahead = "󰁝 \\(\${count}\\) ";
+        behind = "󰁅 \\(\${count}\\) ";
+        up_to_date = "󰗠 ";
 
         conflicted = "󰁄 ";
         diverged = "󰦻 ";
@@ -93,8 +94,6 @@
         stashed = "󰪶 ";
 
         untracked = "󰡯 ";
-
-        up_to_date = "󰗠 ";
 
         use_git_executable = false;
       };
