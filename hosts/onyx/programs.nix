@@ -13,7 +13,6 @@
     fastfetch
     file
     tree
-    ripgrep
     ffmpeg
     
     curl
