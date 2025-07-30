@@ -19,6 +19,7 @@
     ./boot.nix
     ./filesystems.nix
     ./git.nix
+    ./oomd.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
