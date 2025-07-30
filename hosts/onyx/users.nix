@@ -19,11 +19,8 @@
       "kvm"
       "libvirtd"
       "gamemode"
-      "qemu-libvirtd"
     ];
     
     shell = pkgs.zsh;
   };
-
-  programs.zsh.enable = true;
 }
