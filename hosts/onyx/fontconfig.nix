@@ -11,6 +11,12 @@
       noto-fonts-color-emoji
       noto-fonts-extra
       nerd-fonts.noto
+      
+      # wine wants them
+      freefont_ttf
+      liberation_ttf
+      dejavu_fonts
+      corefonts
     ];
 
     fontconfig = {
