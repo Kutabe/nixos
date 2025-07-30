@@ -2,10 +2,12 @@
 
 {
   home.packages = with pkgs; [
+    wineWowPackages.stable
     winetricks
     protontricks
     protonup-ng
     protonup-rs
+    
     mangojuice
     goverlay
   ];
