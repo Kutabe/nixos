@@ -12,6 +12,7 @@
 
   environment.systemPackages = with pkgs; [
     kdePackages.kdenlive
+    adwaita-icon-theme
   ];
   
   xdg.portal = {
