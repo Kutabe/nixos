@@ -10,8 +10,6 @@
   home.username = "cirno";
   home.homeDirectory = "/home/cirno";
 
-  nixpkgs.config.allowUnfree = true;
-
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
