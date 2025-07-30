@@ -1,8 +1,32 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   environment.variables = {
     NIXPKGS_ALLOW_UNFREE = "1";
+  };
+
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "fzf"
+        "git"
+      ];
+    };
+    shellAliases = {
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+
+      "ls" = "eza --icons=auto --group-directories-first --color=always";
+      "l" = "eza --icons=auto --group-directories-first --color=always -l";
+      "ll" = "eza --icons=auto --group-directories-first --color=always -la";
+      "tree" = "eza --tree --color=always";
+      "diff" = "diff --color=auto";
+    };
   };
 
   programs.bash = {
@@ -13,81 +37,21 @@
       ".." = "cd ..";
       "..." = "cd ../..";
       "...." = "cd ../../..";
-      "ls" = "eza --icons=auto --group-directories-first --group";
-      "l" = "eza --icons=auto --group-directories-first --group -l";
-      "ll" = "eza --icons=auto --group-directories-first --group -la";
-      "tree" = "eza --tree";
-      "grep" = "rg";
+
+      "ls" = "eza --icons=auto --group-directories-first --color=always";
+      "l" = "eza --icons=auto --group-directories-first --color=always -l";
+      "ll" = "eza --icons=auto --group-directories-first --color=always -la";
+      "tree" = "eza --tree --color=always";
       "diff" = "diff --color=auto";
     };
-    
-    shellInit = ''
-      export HISTSIZE=10000
-      export HISTFILESIZE=20000
-      export HISTCONTROL=ignoreboth:erasedups
-      shopt -s histappend
-      shopt -s cmdhist
-      
-      shopt -s autocd
-      shopt -s cdspell
-      shopt -s dirspell
-      shopt -s globstar
-      
-      bind "set completion-ignore-case on"
-      bind "set show-all-if-ambiguous on"
-      bind "set menu-complete-display-prefix on"
-      
-      export CLICOLOR=1
-      export LSCOLORS=ExFxBxDxCxegedabagacad
-      
-      # Enable fzf key bindings and completion
-      if [ -f ${pkgs.fzf}/share/fzf/key-bindings.bash ]; then
-        source ${pkgs.fzf}/share/fzf/key-bindings.bash
-      fi
-      if [ -f ${pkgs.fzf}/share/fzf/completion.bash ]; then
-        source ${pkgs.fzf}/share/fzf/completion.bash
-      fi
-    '';
-    
-    interactiveShellInit = ''
-      bind 'TAB:menu-complete'
-      bind '"\e[Z":menu-complete-backward'
-      
-      bind '"\e[A": history-search-backward'
-      bind '"\e[B": history-search-forward'
-      
-      bind '"\C-r": reverse-search-history'
-    '';
   };
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    
-    shellAliases = {
-      ".." = "cd ..";
-      "..." = "cd ../..";
-      "...." = "cd ../../..";
-      "ls" = "eza --icons=auto --group-directories-first --group";
-      "l" = "eza --icons=auto --group-directories-first --group -l";
-      "ll" = "eza --icons=auto --group-directories-first --group -la";
-      "tree" = "eza --tree";
-      "grep" = "rg";
-      "diff" = "diff --color=auto";
-    };
-    
-    interactiveShellInit = ''
-      # Enable fzf key bindings and completion
-      if [ -f ${pkgs.fzf}/share/fzf/key-bindings.zsh ]; then
-        source ${pkgs.fzf}/share/fzf/key-bindings.zsh
-      fi
-      if [ -f ${pkgs.fzf}/share/fzf/completion.zsh ]; then
-        source ${pkgs.fzf}/share/fzf/completion.zsh
-      fi
-    '';
-  };
+  environment.systemPackages = with pkgs; [
+    eza
+    fzf
+    home-manager
+    nix-index
+  ];
   
   programs.starship = {
     enable = true;
@@ -259,13 +223,6 @@
       };
     };
   };
-  
-  environment.systemPackages = with pkgs; [
-    eza
-    fzf
-    home-manager
-    nix-index
-  ];
 
   programs.pay-respects.enable = true;
 }
