@@ -7,15 +7,7 @@
   };
 
   hardware.keyboard.qmk.enable = true;
-  
-  services.udev.packages = with pkgs; [
-    qmk-udev-rules
-  ];
-
-  environment.systemPackages = with pkgs; [
-    qmk
-    qmk-udev-rules
-  ];
+  services.udev.packages = [ pkgs.qmk-udev-rules ];
 
   hardware = {
     enableAllFirmware = true;
@@ -23,12 +15,16 @@
     sensor.iio.enable = true;
   };
 
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = lib.mkDefault "schedutil";
-  };
+  services.lm-sensors.enable = true;
 
+  environment.systemPackages = with pkgs; [
+    qmk
+    lm_sensors
+    hddtemp
+  ];
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "schedutil";
+  
   boot.tmp.cleanOnBoot = true;
-
   services.thermald.enable = true;
 }
