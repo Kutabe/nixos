@@ -36,6 +36,7 @@
     libreoffice-qt6-fresh
     thunderbird
     discord
+    krita
     
   ];
 
