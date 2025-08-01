@@ -27,5 +27,6 @@
     tmux
     
     rsync
+    rclone
   ];
 }
