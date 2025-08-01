@@ -28,6 +28,7 @@
     experimental-features = [ "nix-command" "flakes" ];
     trusted-users = [ "root" "cirno" ];
     auto-optimise-store = true;
+    download-buffer-size = 134217728;
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
