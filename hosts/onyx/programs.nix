@@ -27,6 +27,8 @@
     tmux
     
     rsync
-    rclone
+    
+    age
+    sops
   ];
 }
