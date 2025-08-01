@@ -156,7 +156,7 @@
         map_symbol = true;
         pipestatus = true;
 
-        pipestatus_format = "[[$pipestatus] ](basalt) [$symbol$common_meaning$signal_name$maybe_int]($style)";
+        pipestatus_format = "[\\[$pipestatus\\] ](basalt) [$symbol$common_meaning$signal_name$maybe_int]($style)";
         format = "[$symbol$status]($style)";
         style = "fg:pink";
         pipestatus_separator = "[❯](basalt)";
