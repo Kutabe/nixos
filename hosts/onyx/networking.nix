@@ -1,8 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  nixpkgs.config.allowUnfree = true;
-  
   networking.hostName = "onyx";
   networking.networkmanager = {
     enable = true;
