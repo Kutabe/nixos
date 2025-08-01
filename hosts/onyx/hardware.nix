@@ -15,8 +15,6 @@
     sensor.iio.enable = true;
   };
 
-  services.lm-sensors.enable = true;
-
   environment.systemPackages = with pkgs; [
     qmk
     lm_sensors
