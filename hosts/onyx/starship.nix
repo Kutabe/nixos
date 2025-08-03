@@ -8,7 +8,7 @@
       continuation_prompt = "[∙](dark-grey) ";
       format = "[╭─\\(](dark-grey)$os$sudo$username@$hostname[\\)─\\($directory$git_branch$git_status\\) $nix_shell$golang](dark-grey)\n[╰─](dark-grey)$character\n";
       palette = "cotton_candy";
-      right_format = "$cmd_duration $jobs$status$git_metrics\n";
+      right_format = "$status$cmd_duration$git_metrics$jobs$shlvl\n";
 
       character = {
         error_symbol = "[❯](pink)";
@@ -17,8 +17,7 @@
       };
 
       cmd_duration = {
-        format = " [󱎫 $duration]($style)";
-        style = "fg:light-grey";
+        format = " [󱎫 ](grey)[$duration](dark-grey)";
 
         min_time = 1000;
         show_milliseconds = false;
@@ -126,10 +125,8 @@
       };
 
       jobs = {
-        format = "[$symbol$number]($style)";
-        style = "fg:grey";
+        format = " [$symbol](light-grey)[$number](grey)";
         symbol = "󰒓 ";
-
         number_threshold = 1;
       };
 
@@ -155,7 +152,7 @@
         map_symbol = true;
         pipestatus = true;
 
-        pipestatus_format = "[\\[$pipestatus\\] ](basalt) [$symbol$common_meaning$signal_name$maybe_int]($style)";
+        pipestatus_format = " [\\[$pipestatus\\]](basalt)[$symbol$common_meaning$signal_name$maybe_int]($style)";
         format = "[$symbol$status]($style)";
         style = "fg:pink";
         pipestatus_separator = "[❯](dark-grey)";
@@ -165,6 +162,23 @@
         sigint_symbol = "[󰚌 ](red)";
         signal_symbol = "[󱐋 ](red)";
         symbol = "[ ](red)";
+      };
+
+      shell = {
+        disabled = true;
+        format = "[$indicator]($style)";
+        style = "fg:blue";
+        
+        bash_indicator = "󰯮 ";
+        fish_indicator = "󰯺 ";
+        zsh_indicator = "󰰶 ";
+      };
+
+      shlvl = {
+        disabled = false;
+        format = " [$symbol$shlvl]($style)";
+        style = "fg:dark-grey";
+        symbol = "[ ](grey)";
       };
 
       username = {
