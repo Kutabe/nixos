@@ -26,11 +26,11 @@
     statix # linter
     deadnix # dead code linter
 
+    # Git
     git-credential-manager
 
     # Desktop
     vscode
-    obs-studio
     telegram-desktop
     haruna
     yt-dlp # ^ haruna's soft dependency
@@ -38,9 +38,11 @@
     thunderbird
     discord
     krita
-    
-    kdePackages.plasma-vault
   ];
+
+  home.file.".backups".source = config.lib.file.mkOutOfStoreSymlink "/mnt/backups";
+  home.file."Games".source = config.lib.file.mkOutOfStoreSymlink "/mnt/games";
+  home.file.".steam-library".source = config.lib.file.mkOutOfStoreSymlink "/mnt/steam-library";
 
   # SOPS
   sops = {
@@ -78,12 +80,24 @@
         pass = $(cat ${config.sops.secrets.nextcloud_pass.path})
         EOF
       
-        ${pkgs.rclone}/bin/rclone mount nextcloud: $HOME/Nextcloud --allow-non-empty --vfs-cache-mode writes
+        ${pkgs.rclone}/bin/rclone mount nextcloud: $HOME/Documents/Nextcloud --allow-non-empty --vfs-cache-mode writes
       '';
     };
     Install = {
       WantedBy = [ "default.target" ];
     };
+  };
+
+  # OBS Studio
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-gstreamer
+      obs-vkcapture
+      input-overlay
+    ];
   };
 
   # Zen Browser
