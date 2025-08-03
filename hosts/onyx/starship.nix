@@ -5,8 +5,8 @@
     enable = true;
     settings = {
       add_newline = false;
-      continuation_prompt = "[∙](basalt) ";
-      format = "[╭─\\(](basalt)$os$sudo$username@$hostname[\\)─\\($directory$git_branch$git_status\\) $nix_shell$golang](basalt)\n[╰─](basalt)$character\n";
+      continuation_prompt = "[∙](dark-grey) ";
+      format = "[╭─\\(](dark-grey)$os$sudo$username@$hostname[\\)─\\($directory$git_branch$git_status\\) $nix_shell$golang](dark-grey)\n[╰─](dark-grey)$character\n";
       palette = "cotton_candy";
       right_format = "$cmd_duration $jobs$status$git_metrics\n";
 
@@ -18,7 +18,7 @@
 
       cmd_duration = {
         format = " [󱎫 $duration]($style)";
-        style = "fg:basalt";
+        style = "fg:light-grey";
 
         min_time = 1000;
         show_milliseconds = false;
@@ -42,14 +42,14 @@
       git_branch = {
         format = " [$symbol$branch(:$remote_branch)]($style)";
         style = "fg:petal";
-        symbol = " ";
+        symbol = "[󰊢 ](#de4c36)";
         truncation_length = 20;
         truncation_symbol = "…";
       };
 
       git_commit = {
         format = " [\\($hash$tag\\)]($style)";
-        style = "fg:basalt";
+        style = "fg:light-grey";
 
         commit_hash_length = 7;
         only_detached = true;
@@ -58,8 +58,8 @@
       git_metrics = {
         format = " [([󰐕$added]($added_style)) ([󰍴$deleted]($deleted_style))]($style)";
 
-        added_style = "fg:sky";
-        deleted_style = "fg:pink";
+        added_style = "fg:green";
+        deleted_style = "fg:red";
         disabled = false;
         only_nonzero_diffs = true;
       };
@@ -81,29 +81,29 @@
         format = " [$ahead_behind$all_status]($style)";
         style = "fg:pink";
 
-        ahead = "[\\[+\${count}\\]](mint) ";
-        behind = "[\\[-\${count}\\]](petal) ";
-        up_to_date = "󰗠 ";
+        ahead = "[\\[+\${count}\\]](green) ";
+        behind = "[\\[-\${count}\\]](red) ";
 
-        conflicted = "󰁄 ";
-        diverged = "󰦻 ";
+        up_to_date = "[󰗠 ](green)";
+        conflicted = "[󰁄 ](red)";
+        diverged = "[󰦻 ](yellow)";
 
-        modified = "󱇧 ";
-        renamed = "󰈪 ";
-        typechanged = "󰩋 ";
-        deleted = "󰩹 ";
+        modified = "[󱇧 ](yellow)";
+        renamed = "[󰈪 ](yellow)";
+        typechanged = "[󰩋 ](yellow)";
+        deleted = "[󰩹 ](red)";
 
-        staged = "󰏓 ";
-        stashed = "󰪶 ";
+        staged = "[󰏓 ](blue)";
+        stashed = "[󰪶 ](blue)";
 
-        untracked = "󰡯 ";
+        untracked = "[󰡯 ](yellow)";
 
         use_git_executable = false;
       };
 
       golang = {
         format = "[$symbol($version)]($style)";
-        style = "fg:sky";
+        style = "fg:#00ADD8";
         symbol = "󰟓 ";
       };
 
@@ -112,9 +112,9 @@
         style = "fg:sky";
         symbol = "󱄅 ";
 
-        impure_msg = "[impure](dimmed)";
-        pure_msg = "[pure](dimmed)";
-        unknown_msg = "[unknown](dimmed)";
+        impure_msg = "[impure](dark-grey)";
+        pure_msg = "[pure](dark-grey)";
+        unknown_msg = "[unknown](dark-grey)";
       };
 
       hostname = {
@@ -127,26 +127,25 @@
 
       jobs = {
         format = "[$symbol$number]($style)";
-        style = "fg:basalt";
+        style = "fg:grey";
         symbol = "󰒓 ";
 
         number_threshold = 1;
       };
 
       os = {
-        format = "[$symbol](sky)";
+        format = "$symbol";
 
         disabled = false;
         symbols = {
-          Linux = "󰌽 ";
-          NixOS = "󱄅 ";
+          Linux = "[󰌽 ](white)";
+          NixOS = "[󱄅 ](#7EB4DF)";
         };
       };
 
       sudo = {
-        format = "[$symbol]($style)";
-        style = "fg:pink";
-        symbol = "*";
+        format = "$symbol";
+        symbol = "[*](pink)";
 
         disabled = false;
       };
@@ -161,11 +160,11 @@
         style = "fg:pink";
         pipestatus_separator = "[❯](basalt)";
 
-        not_executable_symbol = " ";
-        not_found_symbol = "󱞃 ";
-        sigint_symbol = "󰚌 ";
-        signal_symbol = "󱐋 ";
-        symbol = " ";
+        not_executable_symbol = "[ ](red)";
+        not_found_symbol = "[󱞃 ](red)";
+        sigint_symbol = "[󰚌 ](red)";
+        signal_symbol = "[󱐋 ](red)";
+        symbol = "[ ](red)";
       };
 
       username = {
@@ -179,11 +178,22 @@
 
       palettes = {
         cotton_candy = {
-          basalt = "#696B6B";
+          white = "#FEFEFE";
+          light-grey = "#D3D3D3";
+          grey = "#A9A9A9";
+          dark-grey = "#696969";
+
+          yellow = "#F7CE63";
+          peach = "#F3AA79";
           petal = "#FFC1DA";
           pink = "#FF90BB";
+          red = "#FF746A";
+          purple = "#937DC0";
+          blue = "#5FA3D9";
           sky = "#8ACCD5";
-          mint = "#B2F2BB";
+          aqua = "#54BCBB";
+          menthol = "#B2F2BB";
+          green = "#8DC05A";
         };
       };
     };
