@@ -11,7 +11,9 @@
   programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [
+    kdePackages.kcolorchooser
     kdePackages.kdenlive
+    kdePackages.plasma-vault
     adwaita-icon-theme
   ];
   
