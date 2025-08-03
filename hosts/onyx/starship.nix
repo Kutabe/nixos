@@ -103,8 +103,8 @@
 
       golang = {
         format = "[$symbol($version)]($style)";
-        style = "fg:#00ADD8";
-        symbol = "󰟓 ";
+        style = "fg:white";
+        symbol = "[󰟓 ](#00ADD8)";
       };
 
       nix_shell = {
