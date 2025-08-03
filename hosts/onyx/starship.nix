@@ -158,7 +158,7 @@
         pipestatus_format = "[\\[$pipestatus\\] ](basalt) [$symbol$common_meaning$signal_name$maybe_int]($style)";
         format = "[$symbol$status]($style)";
         style = "fg:pink";
-        pipestatus_separator = "[❯](basalt)";
+        pipestatus_separator = "[❯](dark-grey)";
 
         not_executable_symbol = "[ ](red)";
         not_found_symbol = "[󱞃 ](red)";
