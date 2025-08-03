@@ -21,6 +21,14 @@
     mtr
     wget
     
+    pciutils
+    usbutils
+    lshw
+    hdparm
+    smartmontools
+    hwinfo
+    
+    
     micro
     tealdeer
     timg
