@@ -6,9 +6,16 @@
     settings = {
       add_newline = false;
       continuation_prompt = "[∙](dark-grey) ";
-      format = "[╭─\\(](dark-grey)$os$sudo$username@$hostname[\\)─\\($directory$git_branch$git_status\\) $nix_shell$golang](dark-grey)\n[╰─](dark-grey)$character\n";
+      format = ''
+        [╭─\(](dark-grey)$os$sudo$username@$hostname[\)─\($directory$git_branch$git_status\) $golang](dark-grey)$fill$git_metrics$nix_shell$shell
+        [╰─](dark-grey)$character
+      '';
       palette = "cotton_candy";
-      right_format = "$status$cmd_duration$git_metrics$jobs$shlvl\n";
+      right_format = "$status$cmd_duration$jobs$shlvl\n";
+
+      fill = {
+        symbol = " ";
+      };
 
       character = {
         error_symbol = "[❯](pink)";
@@ -55,7 +62,7 @@
       };
 
       git_metrics = {
-        format = " [([󰐕$added]($added_style)) ([󰍴$deleted]($deleted_style))]($style)";
+        format = " [([+$added]($added_style)) ([-$deleted]($deleted_style))]($style) ";
 
         added_style = "fg:green";
         deleted_style = "fg:red";
@@ -107,7 +114,7 @@
       };
 
       nix_shell = {
-        format = "[$symbol$state]($style)";
+        format = "[$symbol$state]($style) ";
         style = "fg:sky";
         symbol = "󱄅 ";
 
@@ -165,7 +172,7 @@
       };
 
       shell = {
-        disabled = true;
+        disabled = false;
         format = "[$indicator]($style)";
         style = "fg:blue";
         
