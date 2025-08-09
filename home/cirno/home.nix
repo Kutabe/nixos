@@ -38,6 +38,7 @@
     thunderbird
     discord
     krita
+    qbittorrent
   ];
 
   home.file.".backups".source = config.lib.file.mkOutOfStoreSymlink "/mnt/backups";
